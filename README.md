@@ -1,10 +1,5 @@
 # Kubernetes Hands-On 03.11.2017 Frankfurt cc
 
-## Fragen
-
-* Kubernetes wieder weg von DevOps
-
-
 ## Links
 
 2 day workshop: https://github.com/kelseyhightower/kubernetes-the-hard-way
