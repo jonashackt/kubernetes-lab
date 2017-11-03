@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: confy-frontend
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: confy
+        role: frontend
+    spec:
+      containers:
+      - name: confy
+        image: nbyl/confy-aio:1.0-e2117ff8e1
+        #resources:
+        #  requests:
+        #    cpu: 800m
+        #    memory: 800Mi
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://confy-database:5432/confy
+        - name: SPRING_DATASOURCE_USERNAME
+          value: confy
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: confy-database
+  # these labels can be applied automatically
+  # from the labels in the pod template if not set
+  # labels:
+  #   app: postgres
+  #   role: master
+  #   tier: backend
+spec:
+  # this replicas value is default
+  # modify it according to your case
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: confy
+        role: database
+    spec:
+      containers:
+      - name: master
+        image: postgres:9.6.1
+        env:
+        - name: POSTGRES_USER
+          value: confy
+        - name: POSTGRES_PASSWORD
+          value:
+        resources:
+          requests:
+            cpu: 500m
+            memory: 500Mi
+        ports:
+        - containerPort: 5432

@@ -1,0 +1,34 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ template "fullname" . }}-speaker-service
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "fullname" . }}-speaker-service
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}-speaker-service
+        image: "{{ .Values.image.repository }}-speaker-service:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_RABBITMQ_ADDRESSES
+          value: confy-queue-rabbitmq
+        - name: SPRING_RABBITMQ_USERNAME
+          value: confy
+        - name: SPRING_RABBITMQ_PASSWORD
+          value: confy01
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:postgresql://confy-database-postgresql/confy
+        - name: SPRING_DATASOURCE_USERNAME
+          value: confy
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: confy01
+        resources:
+{{ toYaml .Values.resources | indent 12 }}
