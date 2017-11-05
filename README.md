@@ -6,11 +6,7 @@
 
 https://reactdom.com/blog/kubernetes-books
 
-Ansible
 
-http://blog.kubernetes.io/2017/05/kubespray-ansible-collaborative-kubernetes-ops.html
-
-https://github.com/kubernetes-incubator/kubespray
 
 ## Kubernetes 101
 
@@ -86,6 +82,8 @@ Kubernetes Labels --> mapped onto Docker label
 ```
 
 --> for blue green deployments
+
+
 
 ### Hands-On Prerequisites
 
@@ -170,6 +168,8 @@ YAML-Templates
 
 `helm init`
 
+
+
 #### Lab 2
 
 `helm install --name confy-queue --set rabbitmqUsername=confy,rabbitmqPassword=confy01 stable/rabbitmq`
@@ -233,11 +233,62 @@ Access-Modes - only (RW Only) for relational!, many (RW Many)
 
 `watch kubectl get po -a`
 
+#### Elasticsearch
+
+fluentd https://www.fluentd.org/ (instead of logstash w/o Kubernetes)
+
+https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch
+
+
+
 
 ## Databases
 
 #### Classical Relational DBs
 
 --> Leave it OUTSIDE of Kubernetes!
+
+
+## How to setup Kubernetes Cluster?
+
+Manage more then one Kubernetes-Cluster:
+
+AWS: https://github.com/kubernetes/kops (easiest way)
+
+
+Togehter with Ansible:
+
+kubeadm: https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/ (non-AWS)
+
+--> Windows: https://github.com/kubernetes/kubeadm/issues/364
+
+
+Ansible
+
+http://blog.kubernetes.io/2017/05/kubespray-ansible-collaborative-kubernetes-ops.html
+
+https://github.com/kubernetes-incubator/kubespray
+
+
+Rancher 2.0
+
+
+Enterprise: CoreOS Tectonic (new, managed, good), OpenShift Redhad (months older)
+
+
+## Backup
+
+heptio https://heptio.com/opensource/
+
+
+## Access from outside
+
+Amazon ELB (costly)
+
+Ingress, Ingress-Controller implementation Traefik! - as Service deployment in Kubernetes
+ + Wildcard DNS
+
+
+
 
 

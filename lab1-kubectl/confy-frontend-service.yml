@@ -6,7 +6,7 @@ metadata:
     app: confy
     role: frontend
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     # the port that this service should serve on
   - port: 80
